@@ -16,7 +16,8 @@
     "prepublishOnly": "pnpm lint && pnpm format && pnpm build",
     "build:watch": "nodemon --watch src --ext js,jsx,ts,tsx,json,css,scss,html --exec pnpm build",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "postinstall": "pnpm run build"
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.1.4",
