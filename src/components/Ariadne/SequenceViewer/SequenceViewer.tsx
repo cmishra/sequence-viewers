@@ -94,18 +94,16 @@ export const SequenceViewer = ({
           containerClassName,
         )}
       >
-        {!hideMetadataBar && (
           <SeqMetadataBar
             hoveredPosition={hoveredPosition}
             activeAnnotation={activeAnnotation}
-            className="sticky inset-x-0 top-0 z-[3] w-full px-2 py-1 backdrop-blur-md"
+            className={classNames("sticky inset-x-0 top-0 z-[3] w-full px-2 py-1 backdrop-blur-md", hideMetadataBar ? 'hidden' : '')}
             annotatedSequences={annotatedSequences}
             charClassName={charClassName}
             seqIdxToCopy={seqIdxToCopy}
             setSeqIdxToCopy={setSeqIdxToCopy}
             selection={selection}
           />
-        )}
         <div className="flex flex-wrap px-2">{memoizedSeqContent}</div>
       </div>
     </>
