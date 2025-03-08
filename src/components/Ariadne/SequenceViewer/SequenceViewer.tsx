@@ -474,20 +474,19 @@ export const CopyDisplay = ({
     return stringToCopy;
   };
   useEffect(function mountCopyHandler() {
-    const copyHandler = (e: ClipboardEvent) => {
+    const copyHandler = async (e: ClipboardEvent) => {
       const stringToCopy = getStringToCopy();
       if (!stringToCopy) {
         return;
       }
-      e.clipboardData?.setData("text/plain", stringToCopy);
-      alert("Copied to clipboard!");
       e.preventDefault();
+      await navigator.clipboard.writeText(stringToCopy);
     };
     document.addEventListener("copy", copyHandler);
     return function unmountCopyHandler() {
       document.removeEventListener("copy", copyHandler);
     };
-  }, []);
+  }, [selection, annotatedSequences, seqIdxToCopy]);
 
   return (
     <span className="flex">
